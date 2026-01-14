@@ -11,31 +11,43 @@
 <br><br>
 <input type="password" id="password" placeholder="Password">
 <br><br>
-<button onclick="login()">Login</button>
+
+<button id="loginBtn" type="button">Login</button>
 
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
+  alert("JS LOADED"); // 🔴 IMPORTANT: confirms script is running
+
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID"
+    apiKey: "AIzaSyAB-FuXAKzTnVDKCety5SSD7W5XlfvSm4",
+    authDomain: "apd-global-trade.firebaseapp.com",
+    projectId: "apd-global-trade",
+    storageBucket: "apd-global-trade.firebasestorage.app",
+    messagingSenderId: "821359117885",
+    appId: "1:821359117885:web:9735cb3061377b21ba4c54"
   };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
 
-  window.login = function () {
+  document.getElementById("loginBtn").addEventListener("click", () => {
+    alert("LOGIN CLICKED"); // 🔴 confirms button click works
+
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
+        alert("LOGIN SUCCESS");
         window.location.href = "panel.html";
       })
       .catch((error) => {
-  alert(error.code + " — " + error.message);
-});
+        alert(error.code + " — " + error.message);
+      });
+  });
+</script>
 
-
+</body>
+</html>
