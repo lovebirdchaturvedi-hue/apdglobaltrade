@@ -7,12 +7,13 @@
   box-sizing: border-box;
 }
 
+/* 🔥 BIG BASE FONT */
 body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background: #f4f6f9;
   color: #1c1c1c;
-  line-height: 1.8;
-  font-size: 17px;
+  line-height: 1.9;
+  font-size: 18.5px;   /* 👈 NOTICEABLE CHANGE */
 }
 
 /* =========================
@@ -20,7 +21,7 @@ body {
 ========================= */
 header {
   background: linear-gradient(90deg, #071a2d, #0b2a45);
-  padding: 18px 60px;
+  padding: 20px 60px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,22 +29,21 @@ header {
 
 header .logo {
   color: #d4af37;
-  font-size: 22px;
+  font-size: 24px;   /* BIGGER LOGO */
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
 nav a {
   color: #ffffff;
-  margin-left: 22px;
+  margin-left: 26px;
   text-decoration: none;
-  font-weight: 500;
-  opacity: 0.9;
+  font-weight: 600;
+  font-size: 16.5px;
 }
 
 nav a:hover {
   color: #d4af37;
-  opacity: 1;
 }
 
 /* =========================
@@ -51,7 +51,7 @@ nav a:hover {
 ========================= */
 .hero-video {
   position: relative;
-  height: 520px;
+  height: 560px;
   overflow: hidden;
 }
 
@@ -65,21 +65,21 @@ nav a:hover {
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(7, 26, 45, 0.45);
+  background: rgba(7, 26, 45, 0.4);
   display: flex;
   align-items: center;
   color: #fff;
 }
 
 .hero-overlay h1 {
-  font-size: 52px;
-  max-width: 760px;
+  font-size: 58px;  /* 🔥 VERY CLEAR */
+  max-width: 820px;
 }
 
 .hero-overlay p {
-  font-size: 19px;
-  margin-top: 16px;
-  max-width: 700px;
+  font-size: 22px;
+  margin-top: 18px;
+  max-width: 760px;
 }
 
 /* =========================
@@ -87,13 +87,14 @@ nav a:hover {
 ========================= */
 .btn-primary {
   display: inline-block;
-  margin-top: 28px;
+  margin-top: 32px;
   background: #d4af37;
   color: #071a2d;
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 4px;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 17px;
 }
 
 .btn-primary:hover {
@@ -106,37 +107,37 @@ nav a:hover {
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 80px 20px;
+  padding: 90px 20px;
 }
 
 /* =========================
    HEADINGS
 ========================= */
 h2 {
-  font-size: 34px;
-  margin-bottom: 24px;
+  font-size: 38px;   /* 🔥 BIG SECTION TITLES */
+  margin-bottom: 26px;
   color: #071a2d;
 }
 
 h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
+  font-size: 24px;
+  margin-bottom: 12px;
   color: #071a2d;
 }
 
 /* =========================
-   TRUST / CARD
+   TRUST CARD
 ========================= */
 .card {
   background: #ffffff;
-  padding: 42px;
+  padding: 48px;
   border-radius: 6px;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
 }
 
 .card p {
-  font-size: 18px;
-  margin-top: 6px;
+  font-size: 19.5px;
+  margin-top: 8px;
 }
 
 /* =========================
@@ -144,55 +145,52 @@ h3 {
 ========================= */
 .trade-video {
   position: relative;
-  height: 420px;
+  height: 460px;
   overflow: hidden;
-  margin: 90px 0;
+  margin: 100px 0;
 }
 
 .trade-video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(1.1);
 }
 
 .trade-video-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(11, 42, 69, 0.5);
+  background: rgba(11, 42, 69, 0.45);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   color: #ffffff;
-  padding: 20px;
 }
 
 .trade-video-overlay h2 {
-  font-size: 38px;
+  font-size: 42px;
   color: #d4af37;
 }
 
 .trade-video-overlay p {
-  margin-top: 16px;
-  max-width: 760px;
-  font-size: 18px;
+  margin-top: 18px;
+  max-width: 820px;
+  font-size: 20px;
 }
 
 /* =========================
-   LISTS / SECTORS
+   LISTS
 ========================= */
 ul {
   list-style: none;
-  padding-left: 0;
 }
 
 ul li {
-  margin-bottom: 12px;
-  padding-left: 22px;
+  margin-bottom: 14px;
+  padding-left: 26px;
   position: relative;
-  font-size: 18px;
+  font-size: 19.5px;
 }
 
 ul li::before {
@@ -209,49 +207,41 @@ ul li::before {
 footer {
   background: #071a2d;
   color: #d9d9d9;
-  padding: 55px 20px;
+  padding: 60px 20px;
   text-align: center;
+  font-size: 16.5px;
 }
 
 footer a {
   color: #d4af37;
-  text-decoration: none;
-}
-
-footer a:hover {
-  text-decoration: underline;
 }
 
 /* =========================
-   RESPONSIVE
+   RESPONSIVE (MOBILE)
 ========================= */
 @media (max-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+
   header {
     flex-direction: column;
     text-align: center;
   }
 
   nav {
-    margin-top: 10px;
-  }
-
-  nav a {
-    margin: 0 10px;
-  }
-
-  body {
-    font-size: 16px;
+    margin-top: 12px;
   }
 
   .hero-overlay h1 {
-    font-size: 38px;
+    font-size: 42px;
   }
 
   h2 {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .trade-video-overlay h2 {
-    font-size: 28px;
+    font-size: 30px;
   }
 }
