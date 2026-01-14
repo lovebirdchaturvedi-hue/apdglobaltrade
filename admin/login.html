@@ -34,9 +34,8 @@
       .then(() => {
         window.location.href = "panel.html";
       })
-      .catch(() => alert("Invalid admin credentials"));
-  };
-</script>
+      .catch((error) => {
+  alert(error.code + " — " + error.message);
+});
 
-</body>
-</html>
+
