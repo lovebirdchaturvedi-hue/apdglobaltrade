@@ -11,7 +11,8 @@ body {
   font-family: "Segoe UI", Roboto, Arial, sans-serif;
   background: #f4f6f9;
   color: #1c1c1c;
-  line-height: 1.7;
+  line-height: 1.8;
+  font-size: 17px;
 }
 
 /* =========================
@@ -29,6 +30,7 @@ header .logo {
   color: #d4af37;
   font-size: 22px;
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 nav a {
@@ -41,6 +43,7 @@ nav a {
 
 nav a:hover {
   color: #d4af37;
+  opacity: 1;
 }
 
 /* =========================
@@ -69,26 +72,32 @@ nav a:hover {
 }
 
 .hero-overlay h1 {
-  font-size: 46px;
+  font-size: 52px;
+  max-width: 760px;
 }
 
 .hero-overlay p {
-  font-size: 18px;
-  margin-top: 15px;
+  font-size: 19px;
+  margin-top: 16px;
+  max-width: 700px;
 }
 
 /* =========================
-   BUTTON
+   BUTTONS
 ========================= */
 .btn-primary {
   display: inline-block;
-  margin-top: 26px;
+  margin-top: 28px;
   background: #d4af37;
   color: #071a2d;
-  padding: 14px 26px;
+  padding: 14px 28px;
   border-radius: 4px;
   text-decoration: none;
   font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: #c9a633;
 }
 
 /* =========================
@@ -97,17 +106,37 @@ nav a:hover {
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 70px 20px;
+  padding: 80px 20px;
 }
 
 /* =========================
-   CARD
+   HEADINGS
+========================= */
+h2 {
+  font-size: 34px;
+  margin-bottom: 24px;
+  color: #071a2d;
+}
+
+h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  color: #071a2d;
+}
+
+/* =========================
+   TRUST / CARD
 ========================= */
 .card {
   background: #ffffff;
-  padding: 40px;
+  padding: 42px;
   border-radius: 6px;
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.07);
+}
+
+.card p {
+  font-size: 18px;
+  margin-top: 6px;
 }
 
 /* =========================
@@ -117,7 +146,7 @@ nav a:hover {
   position: relative;
   height: 420px;
   overflow: hidden;
-  margin: 80px 0;
+  margin: 90px 0;
 }
 
 .trade-video video {
@@ -136,30 +165,34 @@ nav a:hover {
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: #fff;
+  color: #ffffff;
+  padding: 20px;
 }
 
 .trade-video-overlay h2 {
-  font-size: 34px;
+  font-size: 38px;
   color: #d4af37;
 }
 
 .trade-video-overlay p {
-  margin-top: 14px;
-  max-width: 700px;
+  margin-top: 16px;
+  max-width: 760px;
+  font-size: 18px;
 }
 
 /* =========================
-   LISTS
+   LISTS / SECTORS
 ========================= */
 ul {
   list-style: none;
+  padding-left: 0;
 }
 
 ul li {
-  margin-bottom: 10px;
-  padding-left: 20px;
+  margin-bottom: 12px;
+  padding-left: 22px;
   position: relative;
+  font-size: 18px;
 }
 
 ul li::before {
@@ -167,6 +200,7 @@ ul li::before {
   position: absolute;
   left: 0;
   color: #d4af37;
+  font-weight: bold;
 }
 
 /* =========================
@@ -175,12 +209,17 @@ ul li::before {
 footer {
   background: #071a2d;
   color: #d9d9d9;
-  padding: 50px 20px;
+  padding: 55px 20px;
   text-align: center;
 }
 
 footer a {
   color: #d4af37;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
 
 /* =========================
@@ -189,13 +228,30 @@ footer a {
 @media (max-width: 768px) {
   header {
     flex-direction: column;
+    text-align: center;
+  }
+
+  nav {
+    margin-top: 10px;
+  }
+
+  nav a {
+    margin: 0 10px;
+  }
+
+  body {
+    font-size: 16px;
   }
 
   .hero-overlay h1 {
-    font-size: 34px;
+    font-size: 38px;
+  }
+
+  h2 {
+    font-size: 28px;
   }
 
   .trade-video-overlay h2 {
-    font-size: 26px;
+    font-size: 28px;
   }
 }
