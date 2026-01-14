@@ -2,14 +2,15 @@
 <html>
 <head>
   <title>Admin Login – APD Global Trade</title>
+  <meta charset="utf-8" />
 </head>
 <body>
 
 <h2>Admin Login</h2>
 
-<input type="email" id="email" placeholder="Admin Email">
+<input type="email" id="email" placeholder="Admin Email" />
 <br><br>
-<input type="password" id="password" placeholder="Password">
+<input type="password" id="password" placeholder="Password" />
 <br><br>
 
 <button id="loginBtn" type="button">Login</button>
@@ -18,13 +19,13 @@
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
   import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-  alert("JS LOADED"); // 🔴 IMPORTANT: confirms script is running
+  alert("JS LOADED");
 
   const firebaseConfig = {
-    apiKey: "AIzaSyAB-FuXAKzTnVDKCety5SSD7W5XlfvSm4",
+    apiKey: "AIzaSyC6SwTRapsQ7IwGG5QaBaZYyYHApxk3W0U",
     authDomain: "apd-global-trade.firebaseapp.com",
     projectId: "apd-global-trade",
-    storageBucket: "apd-global-trade.firebasestorage.app",
+    storageBucket: "apd-global-trade.appspot.com",
     messagingSenderId: "821359117885",
     appId: "1:821359117885:web:9735cb3061377b21ba4c54"
   };
@@ -33,9 +34,9 @@
   const auth = getAuth(app);
 
   document.getElementById("loginBtn").addEventListener("click", () => {
-    alert("LOGIN CLICKED"); // 🔴 confirms button click works
+    alert("LOGIN CLICKED");
 
-    const email = document.getElementById("email").value;
+    const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
 
     signInWithEmailAndPassword(auth, email, password)
