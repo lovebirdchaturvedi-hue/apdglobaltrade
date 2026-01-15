@@ -102,9 +102,32 @@
     });
   });
 
-  window.unlock = () => {
-    alert("Please upgrade membership to unlock buyer contact details.");
-  };
+  window.unlock = async () => {
+  try {
+    const q = query(
+      collection(db, "memberships"),
+      where("supplierEmail", "==", auth.currentUser.email),
+      where("status", "==", "active")
+    );
+
+    const snap = await getDocs(q);
+
+    if (snap.empty) {
+      alert("🔒 Please upgrade your membership to unlock buyer contact details.");
+      return;
+    }
+
+    // Membership is active
+    alert("✅ Membership active. Buyer contact unlocked.");
+
+    // NEXT STEP:
+    // Here we will actually SHOW buyer contact (coming next)
+
+  } catch (err) {
+    console.error(err);
+    alert("❌ Error checking membership. Please try again.");
+  }
+};
 
   document.getElementById("logoutBtn").onclick = () => {
     signOut(auth).then(() => location.href = "login.html");
@@ -113,3 +136,4 @@
 
 </body>
 </html>
+
