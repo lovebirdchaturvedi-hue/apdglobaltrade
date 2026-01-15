@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RFQ Management</title>
+  <title>RFQ Management | APD Admin</title>
   <link rel="stylesheet" href="assets/admin.css">
 </head>
 <body>
@@ -9,9 +9,9 @@
 <div class="sidebar">
   <h2>APD Admin</h2>
   <a href="dashboard.html">Dashboard</a>
-  <a href="rfqs.html">RFQs</a>
+  <a href="rfqs.html" class="active">RFQs</a>
   <a href="suppliers.html">Suppliers</a>
-  <button class="logout" id="logoutBtn">Logout</button>
+  <button id="logoutBtn">Logout</button>
 </div>
 
 <div class="main">
@@ -21,9 +21,11 @@
     <thead>
       <tr>
         <th>Product</th>
-        <th>Quantity</th>
+        <th>Qty</th>
+        <th>Origin</th>
+        <th>Port</th>
         <th>Buyer</th>
-        <th>Email</th>
+        <th>Type</th>
         <th>Status</th>
         <th>Action</th>
       </tr>
@@ -62,20 +64,22 @@
   });
 
   async function loadRFQs() {
-    const rfqTable = document.getElementById("rfqTable");
-    rfqTable.innerHTML = "";
+    const table = document.getElementById("rfqTable");
+    table.innerHTML = "";
 
-    const snapshot = await getDocs(collection(db, "rfqs"));
-    snapshot.forEach(docSnap => {
-      const d = docSnap.data();
+    const snap = await getDocs(collection(db, "rfqs"));
+    snap.forEach(docSnap => {
+      const r = docSnap.data();
 
-      rfqTable.innerHTML += `
+      table.innerHTML += `
         <tr>
-          <td>${d.product}</td>
-          <td>${d.quantity}</td>
-          <td>${d.buyerName}</td>
-          <td>${d.email}</td>
-          <td>${d.status}</td>
+          <td>${r.product}</td>
+          <td>${r.quantity}</td>
+          <td>${r.origin || "-"}</td>
+          <td>${r.destinationPort || "-"}</td>
+          <td>${r.buyerCompany || "—"}</td>
+          <td>${r.rfqType || "buyer"}</td>
+          <td>${r.status}</td>
           <td>
             <button onclick="updateStatus('${docSnap.id}','approved')">Approve</button>
             <button onclick="updateStatus('${docSnap.id}','rejected')">Reject</button>
