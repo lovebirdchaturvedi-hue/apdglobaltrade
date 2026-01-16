@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register as Supplier – APD Global Trade</title>
+</head>
+
+<body>
+<h2>Supplier Registration</h2>
+
+<form id="supplierForm">
+  <input type="text" id="companyName" placeholder="Company Name" required><br><br>
+  <input type="text" id="contactPerson" placeholder="Contact Person" required><br><br>
+  <input type="text" id="phone" placeholder="Phone Number" required><br><br>
+  <input type="text" id="country" placeholder="Country" required><br><br>
+  <textarea id="products" placeholder="Products you deal in" required></textarea><br><br>
+
+  <button type="submit">Submit for Approval</button>
+</form>
+
+<p id="msg"></p>
+
+<script type="module">
+import { auth, db } from "./js/firebase-init.js";
+import { onAuthStateChanged } from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { doc, setDoc, getDoc, serverTimestamp } from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+const form = document.getElementById("supplierForm");
+const msg = document.getElementById("msg");
+
+let currentUser = null;
+
+onAuthStateChanged(auth, async (user) => {
+  if (!user) {
+    location.href = "/supplier-login.html";
+    return;
+  }
+
+  currentUser = user;
+
+  // Prevent re-registration
+  const ref = doc(db, "suppliers", user.uid);
+  const snap = await getDoc(ref);
+
+  if (snap.exists()) {
+    const status = snap.data().status;
+    if (status === "approved") location.href = "/supplier-dashboard.html";
+    if (status === "pending") location.href = "/pending-approval.html";
+    if (status === "rejected") location.href = "/account-rejected.html";
+  }
+});
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  if (!currentUser) return;
+
+  await setDoc(doc(db, "suppliers", currentUser.uid), {
+    uid: currentUser.uid,
+    email: currentUser.email,
+    companyName: companyName.value,
+    contactPerson: contactPerson.value,
+    phone: phone.value,
+    country: country.value,
+    products: products.value,
+    status: "pending",
+    createdAt: serverTimestamp()
+  });
+
+  msg.innerText = "Submitted successfully. Waiting for approval ⏳";
+  setTimeout(() => {
+    location.href = "/pending-approval.html";
+  }, 1500);
+});
+</script>
+
+</body>
+</html>

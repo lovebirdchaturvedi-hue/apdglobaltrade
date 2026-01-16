@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>Account Under Review ⏳</h2>
+
+<p>
+Your supplier profile is being reviewed.<br>
+You’ll get access once approved by admin.
+</p>
+
+<button onclick="logout()">Logout</button>
+
+<script type="module">
+import { auth } from "./js/firebase-init.js";
+import { signOut } from
+"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+function logout() {
+  signOut(auth);
+}
+</script>
+</body>
+</html>
