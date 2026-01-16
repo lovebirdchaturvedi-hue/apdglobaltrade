@@ -17,18 +17,22 @@ You’ll get access once approved by admin.
 
 <button id="logoutBtn">Logout</button>
 
-<script>
-/*
-  🔥 GUARANTEED DEBUG LOGOUT
-  This confirms button click + redirect works.
-  No Firebase involved.
-*/
+<script type="module">
+import { auth } from "./js/firebase-init.js";
+import { onAuthStateChanged, signOut } from
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  alert("LOGOUT BUTTON CLICKED");
-  localStorage.clear();
-  sessionStorage.clear();
-  window.location.href = "/supplier-login.html";
+/* 🔐 BLOCK PAGE IF NOT LOGGED IN */
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.replace("/supplier-login.html");
+  }
+});
+
+/* 🔓 LOGOUT */
+document.getElementById("logoutBtn").addEventListener("click", async () => {
+  await signOut(auth);
+  window.location.replace("/supplier-login.html");
 });
 </script>
 
