@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Account Under Review – APD Global Trade</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
 <body>
+
 <h2>Account Under Review ⏳</h2>
 
 <p>
@@ -8,16 +15,27 @@ Your supplier profile is being reviewed.<br>
 You’ll get access once approved by admin.
 </p>
 
-<button onclick="logout()">Logout</button>
+<button id="logoutBtn">Logout</button>
+
+<p id="msg" style="color:red;"></p>
 
 <script type="module">
 import { auth } from "./js/firebase-init.js";
 import { signOut } from
-"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+  "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-function logout() {
-  signOut(auth);
-}
+const logoutBtn = document.getElementById("logoutBtn");
+const msg = document.getElementById("msg");
+
+logoutBtn.addEventListener("click", async () => {
+  try {
+    await signOut(auth);
+    window.location.href = "/supplier-login.html";
+  } catch (err) {
+    msg.innerText = err.message;
+  }
+});
 </script>
+
 </body>
 </html>
