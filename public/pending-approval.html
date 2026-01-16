@@ -17,36 +17,18 @@ You’ll get access once approved by admin.
 
 <button id="logoutBtn">Logout</button>
 
-<p id="msg" style="color:red;"></p>
+<script>
+/*
+  🔥 GUARANTEED DEBUG LOGOUT
+  This confirms button click + redirect works.
+  No Firebase involved.
+*/
 
-<script type="module">
-/* 🔥 IMPORT FIREBASE DIRECTLY (NO SHARED FILE) */
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-
-/* ✅ YOUR REAL CONFIG (already verified) */
-const firebaseConfig = {
-  apiKey: "AIzaSyABA-KRY6bY7K2QZwLhQ2piHjQVLLceiGs",
-  authDomain: "apd-globaltrade-prod.firebaseapp.com",
-  projectId: "apd-globaltrade-prod",
-  storageBucket: "apd-globaltrade-prod.appspot.com",
-  messagingSenderId: "226407312435",
-  appId: "1:226407312435:web:f8a54b1132af3899170746"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-const logoutBtn = document.getElementById("logoutBtn");
-const msg = document.getElementById("msg");
-
-logoutBtn.addEventListener("click", async () => {
-  try {
-    await signOut(auth);
-    window.location.replace("/supplier-login.html");
-  } catch (err) {
-    msg.innerText = err.message;
-  }
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  alert("LOGOUT BUTTON CLICKED");
+  localStorage.clear();
+  sessionStorage.clear();
+  window.location.href = "/supplier-login.html";
 });
 </script>
 
