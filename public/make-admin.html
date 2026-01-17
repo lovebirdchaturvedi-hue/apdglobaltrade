@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Make Admin – APD Global Trade</title>
+</head>
+
+<body>
+
+<h2>Make User Admin (One-Time)</h2>
+
+<p>Admin UID:</p>
+<input type="text" id="uid" value="At9s3VZyFXZeyULa3oBpFHMdoFF3" style="width:400px;" />
+
+<br><br>
+<button id="makeAdminBtn">Make Admin</button>
+
+<pre id="result"></pre>
+
+<script>
+document.getElementById("makeAdminBtn").addEventListener("click", async () => {
+  const uid = document.getElementById("uid").value;
+
+  const res = await fetch(
+    "https://us-central1-apd-globaltrade-prod.cloudfunctions.net/makeAdmin",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ uid })
+    }
+  );
+
+  const data = await res.json();
+  document.getElementById("result").innerText =
+    JSON.stringify(data, null, 2);
+});
+</script>
+
+</body>
+</html>
